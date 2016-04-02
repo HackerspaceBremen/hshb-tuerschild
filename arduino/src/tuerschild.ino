@@ -24,11 +24,11 @@ static unsigned long msLast = 0;
 #define BOX2START LEDPROBOX
 #define BOX3START LEDPROBOX*2
 
-#define BOX1SCHALTER 4
-#define BOX2SCHALTER 5
-#define BOX3SCHALTER 6
-#define BOX1LED 7
-#define BOX2LED 8
+#define BOX1SCHALTER 8
+#define BOX2SCHALTER 7
+#define BOX3SCHALTER 4
+#define BOX1LED 5
+#define BOX2LED 6
 #define BOX3LED 9
 
 typedef uint32_t Color;
@@ -134,7 +134,8 @@ void loop ()
         }
         if(!digitalRead(BOX1SCHALTER))
         {
-            digitalWrite(BOX1LED, HIGH);
+            /* digitalWrite(BOX1LED, HIGH); */
+            analogWrite(BOX1LED, 64);
             LightBox(BOX1START, cWhite);
             hsv GreenHsv1 = GreenHsv;
             GreenHsv1.s = GreenHsv.s - Brightness2[j%BSTEPS]*(GreenS-WhiteS)/100.0;
@@ -150,12 +151,14 @@ void loop ()
         }
         else
         {
-            digitalWrite(BOX1LED, LOW);
+            /* digitalWrite(BOX1LED, LOW); */
+            analogWrite(BOX1LED, 0);
             LightBox(BOX1START, cBlack);
         }
         if(!digitalRead(BOX2SCHALTER))
         {
-            digitalWrite(BOX2LED, HIGH);
+            /* digitalWrite(BOX2LED, HIGH); */
+            analogWrite(BOX2LED, 64);
             LightBox(BOX2START, cWhite);
             hsv OrangeHsv1 = OrangeHsv;
             OrangeHsv1.s = OrangeHsv.s - Brightness2[j%BSTEPS]*(OrangeS-WhiteS)/100.0;
@@ -170,12 +173,14 @@ void loop ()
         }
         else
         {
-            digitalWrite(BOX2LED, LOW);
+            /* digitalWrite(BOX2LED, LOW); */
+            analogWrite(BOX2LED, 0);
             LightBox(BOX2START, cBlack);
         }
         if(!digitalRead(BOX3SCHALTER))
         {
-            digitalWrite(BOX3LED, HIGH);
+            /* digitalWrite(BOX3LED, HIGH); */
+            analogWrite(BOX3LED, 64);
             LightBox(BOX3START, cWhite);
             /* strip.setPixelColor(BOX3START+i%LEDPROBOX,strip.Color(YellowR, YellowG, YellowB)); */
             hsv YellowHsv1 = YellowHsv;
@@ -191,7 +196,8 @@ void loop ()
         }
         else
         {
-            digitalWrite(BOX3LED, LOW);
+            /* digitalWrite(BOX3LED, LOW); */
+            analogWrite(BOX3LED, 0);
             LightBox(BOX3START, cBlack);
         }
         msLast = millis();
