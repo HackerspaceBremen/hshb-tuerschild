@@ -1,0 +1,3 @@
+[submodule "arduino/lib"]
+	path = arduino/lib
+	url = git@github.com:Syralist/arduino-libs.git
